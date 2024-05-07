@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lexicom.Concentrate.Wpf.Amenities" Version="8.0.78" />
+    <PackageReference Include="Lexicom.Concentrate.Wpf.Controls" Version="8.0.78" />
+    <PackageReference Include="Lexicom.Mvvm.For.Wpf" Version="8.0.65" />
+    <PackageReference Include="Lexicom.Validation.For.Wpf" Version="8.0.65" />
+    <PackageReference Include="Lexicom.Wpf.Amenities" Version="8.0.65" />
+    <PackageReference Include="Lexicom.Wpf.AttachedProperties" Version="8.0.65" />
+    <PackageReference Include="Lexicom.Wpf.DependencyInjection" Version="8.0.65" />
+    <PackageReference Include="Lexicom.Wpf.ValueConverters" Version="8.0.65" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lexicom.Examples.InventoryManagement.Client.Wpf\Lexicom.Examples.InventoryManagement.Client.Wpf.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexicom.Examples.InventoryManagement.Client.Application", "Lexicom.Examples.InventoryManagement.Client.Application\Lexicom.Examples.InventoryManagement.Client.Application.csproj", "{1CF4000E-345E-407A-8321-368526CB9EAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagement", "InventoryManagement", "{D59E4C57-E6A7-4BC8-849B-15DBB9A9FD30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{310AA794-8363-435F-854C-0E61985AA9F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{AA3D3EBC-4F3F-4D0F-8719-C6AC742CD81B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexicom.Examples.InventoryManagement.Client.Wpf", "Lexicom.Examples.InventoryManagement.Client.Wpf\Lexicom.Examples.InventoryManagement.Client.Wpf.csproj", "{8C41A5E5-303C-49E2-BA59-00A380C3DE25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexicom.Examples.InventoryManagement.Client.Wpf.Presentation", "Lexicom.Examples.InventoryManagement.Client.Wpf.Presentation\Lexicom.Examples.InventoryManagement.Client.Wpf.Presentation.csproj", "{599B0B32-9E41-4D78-B96F-73CFFDCBBBC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CF4000E-345E-407A-8321-368526CB9EAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF4000E-345E-407A-8321-368526CB9EAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF4000E-345E-407A-8321-368526CB9EAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF4000E-345E-407A-8321-368526CB9EAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C41A5E5-303C-49E2-BA59-00A380C3DE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C41A5E5-303C-49E2-BA59-00A380C3DE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C41A5E5-303C-49E2-BA59-00A380C3DE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C41A5E5-303C-49E2-BA59-00A380C3DE25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{599B0B32-9E41-4D78-B96F-73CFFDCBBBC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{599B0B32-9E41-4D78-B96F-73CFFDCBBBC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{599B0B32-9E41-4D78-B96F-73CFFDCBBBC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{599B0B32-9E41-4D78-B96F-73CFFDCBBBC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1CF4000E-345E-407A-8321-368526CB9EAB} = {310AA794-8363-435F-854C-0E61985AA9F3}
+		{310AA794-8363-435F-854C-0E61985AA9F3} = {D59E4C57-E6A7-4BC8-849B-15DBB9A9FD30}
+		{AA3D3EBC-4F3F-4D0F-8719-C6AC742CD81B} = {310AA794-8363-435F-854C-0E61985AA9F3}
+		{8C41A5E5-303C-49E2-BA59-00A380C3DE25} = {AA3D3EBC-4F3F-4D0F-8719-C6AC742CD81B}
+		{599B0B32-9E41-4D78-B96F-73CFFDCBBBC5} = {AA3D3EBC-4F3F-4D0F-8719-C6AC742CD81B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC869204-85E6-4E2C-B662-A5BC53D28E93}
+	EndGlobalSection
+EndGlobal

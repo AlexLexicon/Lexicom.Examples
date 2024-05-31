@@ -14,7 +14,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Lexicom.Examples.InventoryManagement.Client.Wpf.ViewModels;
-public partial class MainWindowViewModel : ObservableObject, IStartup, IShowableViewModel, INotificationHandler<NewProductNotification>, INotificationHandler<ProductFieldUpdatedNotification>
+public partial class MainWindowViewModel : ObservableObject, IStartup, IShowableViewModel, INotificationHandler<NewProductNotification>, INotificationHandler<ProductFieldUpdatedNotification>, INotificationHandler<ProductRecordSelectedNotification>
 {
     private readonly IMediator _mediator;
     private readonly IViewModelFactory _viewModelFactory;
@@ -92,6 +92,11 @@ public partial class MainWindowViewModel : ObservableObject, IStartup, IShowable
         await LoadedAsync(cancellationToken);
 
         await _mediator.Publish(new ProductRecordSelectedNotification(notification.ProductId), cancellationToken);
+    }
+
+    public async Task Handle(ProductRecordSelectedNotification notification, CancellationToken cancellationToken)
+    {
+        await LoadedAsync(cancellationToken);
     }
 
     [RelayCommand]

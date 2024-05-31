@@ -11,6 +11,8 @@ public interface IProductService
     /// <exception cref="ProductDoesNotExistException"></exception>
     Task<Product> GetProductAsync(Guid id, CancellationToken cancellationToken);
     Task<Product> CreateProductAsync(CancellationToken cancellationToken);
+    /// <exception cref="ProductDoesNotExistException"></exception>
+    Task DeleteProductAsync(Guid id, CancellationToken cancellationToken);
 }
 public class ProductService : IProductService
 {
@@ -57,10 +59,34 @@ public class ProductService : IProductService
 
         await using var db = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
 
-        await db.AddAsync(product, cancellationToken);
+        await db.Products.AddAsync(product, cancellationToken);
 
         await db.SaveChangesAsync(cancellationToken);
 
         return product;
+    }
+
+    public async Task DeleteProductAsync(Guid id, CancellationToken cancellationToken)
+    {
+        await using var db = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
+
+        Product? product = await db.Products.FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
+        if (product is null)
+        {
+            throw new ProductDoesNotExistException(id);
+        }
+
+        List<ProductField> fields = await db.ProductFields
+            .Where(pf => pf.ProductId == product.Id)
+            .ToListAsync(cancellationToken);
+
+        foreach (ProductField field in fields)
+        {
+            db.ProductFields.Remove(field);
+        }
+
+        db.Products.Remove(product);
+
+        await db.SaveChangesAsync(cancellationToken);
     }
 }

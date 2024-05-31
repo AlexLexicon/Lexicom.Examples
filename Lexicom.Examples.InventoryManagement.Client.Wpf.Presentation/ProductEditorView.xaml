@@ -16,40 +16,55 @@
         <Border 
             DockPanel.Dock="Top"
             Padding="8"
-            Background="LightGray"
+            Background="WhiteSmoke"
             BorderBrush="Gray"
             BorderThickness="0,0,0,2">
             <DockPanel LastChildFill="False">
                 <Button 
-                    DockPanel.Dock="Left"
+                    DockPanel.Dock="Right"
                     Width="64"
                     Content="Close"
                     Command="{Binding CloseCommand}"
                     IsEnabled="{Binding IsVisible}"/>
-                <Button 
-                    DockPanel.Dock="Right"
-                    Width="112"
-                    Content="Save"
-                    Command="{Binding SaveCommand}"
-                    IsEnabled="{Binding CanSave}"/>
             </DockPanel>
         </Border>
         <Border
             DockPanel.Dock="Top"
             Padding="8"
             Visibility="{Binding IsVisible, Converter={StaticResource ToVisibility}}"
-            Background="Gainsboro">
-            <Label Padding="0">
-                <TextBlock>
-                    <TextBlock 
-                        Text="Id:"
-                        FontWeight="Bold"/>
-                    <TextBlock
-                        Text="{Binding Id}"
-                        d:Text="Product Id"
-                        TextTrimming="CharacterEllipsis"/>
-                </TextBlock>
-            </Label>
+            Background="Gainsboro"
+            BorderBrush="Gray"
+            BorderThickness="0,0,0,2">
+            <StackPanel>
+                <Label 
+                    Padding="0"
+                    Margin="0,0,0,8">
+                    <TextBlock>
+                        <TextBlock 
+                            Text="Id:"
+                            FontWeight="Bold"/>
+                        <TextBlock
+                            Text="{Binding Id}"
+                            d:Text="Product Id"
+                            TextTrimming="CharacterEllipsis"/>
+                    </TextBlock>
+                </Label>
+                <DockPanel LastChildFill="False">
+                    <Button 
+                        DockPanel.Dock="Right"
+                        Width="64"
+                        Content="Save"
+                        Command="{Binding SaveCommand}"
+                        IsEnabled="{Binding CanSave}"/>
+                    <Button 
+                        DockPanel.Dock="Right"
+                        Margin="0,0,8,0"
+                        Width="64"
+                        Content="Delete"
+                        Command="{Binding DeleteCommand}"
+                        IsEnabled="{Binding IsVisible}"/>
+                </DockPanel>
+            </StackPanel>
         </Border>
         <Border 
             DockPanel.Dock="Bottom"  

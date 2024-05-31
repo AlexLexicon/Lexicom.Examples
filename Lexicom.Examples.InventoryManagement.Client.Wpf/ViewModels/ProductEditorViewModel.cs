@@ -15,6 +15,7 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
     private readonly IMediator _mediator;
     private readonly IViewModelFactory _viewModelFactory;
     private readonly IProductFieldService _productFieldService;
+    private readonly IProductService _productService;
     private readonly IRuleSetValidator<ProductRecordNameRuleSet, string?> _editProductRecordNameValidator;
     private readonly IRuleSetValidator<ProductRecordMaximumStockRuleSet, string?> _editProductRecordMaximumStockValidator;
     private readonly IRuleSetValidator<EditProductRecordCurrentStockRuleSet, string?> _editProductRecordCurrentStockValidator;
@@ -23,6 +24,7 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
         IMediator mediator,
         IViewModelFactory viewModelFactory,
         IProductFieldService productFieldService,
+        IProductService productService,
         IRuleSetValidator<ProductRecordNameRuleSet, string?> editProductRecordNameValidator,
         IRuleSetValidator<ProductRecordMaximumStockRuleSet, string?> editProductRecordMaximumStockValidator,
         IRuleSetValidator<EditProductRecordCurrentStockRuleSet, string?> editProductRecordCurrentStockValidator,
@@ -32,6 +34,7 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
         _mediator = mediator;
         _viewModelFactory = viewModelFactory;
         _productFieldService = productFieldService;
+        _productService = productService;
         _editProductRecordNameValidator = editProductRecordNameValidator;
         _editProductRecordMaximumStockValidator = editProductRecordMaximumStockValidator;
         _editProductRecordCurrentStockValidator = editProductRecordCurrentStockValidator;
@@ -128,6 +131,12 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
     }
 
     [RelayCommand]
+    private async Task CloseAsync(CancellationToken cancellationToken)
+    {
+        await _mediator.Publish(new ProductRecordSelectedNotification(null), cancellationToken);
+    }
+
+    [RelayCommand]
     private async Task SaveAsync(CancellationToken cancellationToken)
     {
         await _mediator.Publish(new ProductEditorSavedNotification(Id), cancellationToken);
@@ -136,9 +145,11 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
     }
 
     [RelayCommand]
-    private async Task CloseAsync(CancellationToken cancellationToken)
+    private async Task DeleteAsync(CancellationToken cancellationToken)
     {
-        await _mediator.Publish(new ProductRecordSelectedNotification(null), cancellationToken);
+        await _productService.DeleteProductAsync(Id, cancellationToken);
+
+        await CloseAsync(cancellationToken);
     }
 
     [RelayCommand]

@@ -1,4 +1,6 @@
-﻿using Lexicom.Examples.InventoryManagement.Client.Application.Database;
+﻿using Lexicom.DependencyInjection.Primitives.Extensions;
+using Lexicom.DependencyInjection.Primitives.For.Wpf.Extensions;
+using Lexicom.Examples.InventoryManagement.Client.Application.Database;
 using Lexicom.Examples.InventoryManagement.Client.Application.Extensions;
 using Lexicom.Examples.InventoryManagement.Client.Wpf.Extensions;
 using Lexicom.Examples.InventoryManagement.Client.Wpf.ViewModels;
@@ -39,6 +41,12 @@ public partial class App : System.Windows.Application
                 options.AddViewModel<ProductFieldViewModel>(ServiceLifetime.Transient);
                 options.AddViewModel<ProductRecordViewModel>(ServiceLifetime.Transient);
             });
+
+            l.AddPrimitives(p =>
+            {
+                p.AddGuidProvider();
+            });
+
             l.AddValidation(options =>
             {
                 options.AddAmenities();

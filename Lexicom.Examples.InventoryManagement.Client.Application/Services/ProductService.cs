@@ -1,4 +1,5 @@
-﻿using Lexicom.Examples.InventoryManagement.Client.Application.Database;
+﻿using Lexicom.DependencyInjection.Primitives;
+using Lexicom.Examples.InventoryManagement.Client.Application.Database;
 using Lexicom.Examples.InventoryManagement.Client.Application.Exceptions;
 using Lexicom.Examples.InventoryManagement.Client.Application.Models;
 using Microsoft.EntityFrameworkCore;
@@ -17,10 +18,14 @@ public interface IProductService
 public class ProductService : IProductService
 {
     private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
+    private readonly IGuidProvider _guidProvider;
 
-    public ProductService(IDbContextFactory<ApplicationDbContext> dbContextFactory)
+    public ProductService(
+        IDbContextFactory<ApplicationDbContext> dbContextFactory, 
+        IGuidProvider guidProvider)
     {
         _dbContextFactory = dbContextFactory;
+        _guidProvider = guidProvider;
     }
 
     public async Task<bool> DoesProductExistAsync(Guid id, CancellationToken cancellationToken)
@@ -54,7 +59,7 @@ public class ProductService : IProductService
     {
         var product = new Product
         {
-            Id = Guid.NewGuid(),
+            Id = _guidProvider.NewGuid(),
         };
 
         await using var db = await _dbContextFactory.CreateDbContextAsync(cancellationToken);

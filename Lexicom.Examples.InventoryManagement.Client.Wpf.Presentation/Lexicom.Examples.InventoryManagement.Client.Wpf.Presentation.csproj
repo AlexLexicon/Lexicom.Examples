@@ -21,6 +21,7 @@
   <ItemGroup>
     <PackageReference Include="Lexicom.Concentrate.Wpf.Amenities" Version="8.0.82" />
     <PackageReference Include="Lexicom.Concentrate.Wpf.Controls" Version="8.0.82" />
+    <PackageReference Include="Lexicom.DependencyInjection.Primitives.For.Wpf" Version="8.0.66" />
     <PackageReference Include="Lexicom.Mvvm.For.Wpf" Version="8.0.66" />
     <PackageReference Include="Lexicom.Validation.For.Wpf" Version="8.0.66" />
     <PackageReference Include="Lexicom.Wpf.Amenities" Version="8.0.66" />

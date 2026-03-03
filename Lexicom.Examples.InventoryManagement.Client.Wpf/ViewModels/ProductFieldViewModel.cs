@@ -9,7 +9,7 @@ using MediatR;
 using System.Collections.ObjectModel;
 
 namespace Lexicom.Examples.InventoryManagement.Client.Wpf.ViewModels;
-public partial class ProductFieldViewModel : ObservableObject, INotificationHandler<ProductFieldLoadedNotification>, INotificationHandler<ProductEditorSavedNotification>, INotificationHandler<ProductRecordMaximumStockEditedNotification>
+public partial class ProductFieldViewModel : ObservableObject, INotificationHandler<ProductFieldLoadedNotification>, INotificationHandler<ProductEditorSavedNotification>, INotificationHandler<ProductRecordMaximumStockEditedNotification>, INotificationHandler<InNotification>
 {
     private readonly IMediator _mediator;
     private readonly IProductFieldService _productFieldService;
@@ -124,5 +124,10 @@ public partial class ProductFieldViewModel : ObservableObject, INotificationHand
 
             await _mediator.Publish(new ProductRecordMaximumStockEditedNotification(), cancellationToken);
         }
+    }
+
+    public async Task Handle(InNotification notification, CancellationToken cancellationToken)
+    {
+        await _mediator.Publish(new OutNotification(), cancellationToken);
     }
 }

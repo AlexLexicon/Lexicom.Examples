@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lexicom.Mvvm.Amenities" Version="8.0.70" />
-    <PackageReference Include="Lexicom.Validation.Amenities" Version="8.0.70" />
-    <PackageReference Include="Lexicom.Wpf.DependencyInjection.Abstractions" Version="8.0.70" />
+    <PackageReference Include="Lexicom.Mvvm.Amenities" Version="10.0.4" />
+    <PackageReference Include="Lexicom.Validation.Amenities" Version="10.0.4" />
+    <PackageReference Include="Lexicom.Wpf.DependencyInjection.Abstractions" Version="10.0.4" />
   </ItemGroup>
 
   <ItemGroup>

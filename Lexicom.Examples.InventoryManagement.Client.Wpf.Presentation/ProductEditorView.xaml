@@ -26,6 +26,12 @@
                     Content="Close"
                     Command="{Binding CloseCommand}"
                     IsEnabled="{Binding IsVisible}"/>
+                <Button 
+                    DockPanel.Dock="Left"
+                    Width="64"
+                    Content="In"
+                    Command="{Binding InCommand}"
+                    IsEnabled="{Binding IsVisible}"/>
             </DockPanel>
         </Border>
         <Border

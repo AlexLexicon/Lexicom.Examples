@@ -8,9 +8,10 @@ using Lexicom.Mvvm;
 using Lexicom.Validation;
 using MediatR;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace Lexicom.Examples.InventoryManagement.Client.Wpf.ViewModels;
-public partial class ProductEditorViewModel : ObservableObject, INotificationHandler<ProductRecordSelectedNotification>, INotificationHandler<ProductFieldValidatedNotification>, INotificationHandler<ProductFieldChangedNotification>
+public partial class ProductEditorViewModel : ObservableObject, INotificationHandler<ProductRecordSelectedNotification>, INotificationHandler<ProductFieldValidatedNotification>, INotificationHandler<ProductFieldChangedNotification>, INotificationHandler<OutNotification>
 {
     private readonly IMediator _mediator;
     private readonly IViewModelFactory _viewModelFactory;
@@ -40,6 +41,7 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
         _editProductRecordCurrentStockValidator = editProductRecordCurrentStockValidator;
 
         ItemViewModels = [];
+        LaughingList = [];
         AddProductFieldKeyValidator = addProductFieldKeyValidator;
         AddProductFieldValueValidator = addProductFieldValueValidator;
     }
@@ -52,6 +54,8 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
 
     [ObservableProperty]
     private ObservableCollection<ProductFieldViewModel> _itemViewModels;
+
+    private List<Laugh> LaughingList { get; set; }
 
     [ObservableProperty]
     private bool _isValid;
@@ -84,7 +88,8 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
 
             IReadOnlyList<ProductField> products = await _productFieldService.GetProductFieldsAsync(Id, cancellationToken);
 
-            ItemViewModels.Clear();
+            LaughingList.Clear();
+            ItemViewModels.Clear();// = new ObservableCollection<ProductFieldViewModel>();
             foreach (ProductField productField in products)
             {
                 var itemViewModel = _viewModelFactory.Create<ProductFieldViewModel, ProductField>(productField);
@@ -102,7 +107,10 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
                     itemViewModel.Validator = _editProductRecordCurrentStockValidator;
                 }
 
+                var l = _viewModelFactory.Create<Laugh>();
+
                 ItemViewModels.Add(itemViewModel);
+                LaughingList.Add(l);
             }
         }
 
@@ -171,4 +179,39 @@ public partial class ProductEditorViewModel : ObservableObject, INotificationHan
             CreateFieldValue = null;
         }
     }
+
+    [RelayCommand]
+    private async Task InAsync()
+    {
+        Trace.WriteLine("");
+        Trace.WriteLine($"Start: {DateTime.Now.ToString("HH:mm:ss")}");
+        //Count = 0;
+        //Trace.WriteLine("");
+        //Trace.WriteLine($"Start: {DateTime.Now.ToString("HH:mm:ss")}");
+        //await _mediator.Publish(new InNotification());
+
+        //GC.Collect(GC.MaxGeneration, GCCollectionMode.Aggressive | GCCollectionMode.Forced, true, true);
+    }
+
+    private int Count { get; set; }
+
+    public Task Handle(OutNotification notification, CancellationToken cancellationToken)
+    {
+        Count++;
+        Trace.WriteLine($"{Count}");
+
+        return Task.CompletedTask;
+    }
+}
+public partial class Laugh : ObservableObject
+{
+    private static int LaughCount = 0;
+
+    public Laugh()
+    {
+        LaughCount++;
+        Id = LaughCount;
+    }
+
+    public int Id { get; }
 }

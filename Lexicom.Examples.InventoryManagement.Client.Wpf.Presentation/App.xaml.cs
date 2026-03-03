@@ -40,6 +40,7 @@ public partial class App : System.Windows.Application
                 options.AddViewModel<ProductEditorViewModel>();
                 options.AddViewModel<ProductFieldViewModel>(ServiceLifetime.Transient);
                 options.AddViewModel<ProductRecordViewModel>(ServiceLifetime.Transient);
+                options.AddViewModel<Laugh>(ServiceLifetime.Transient);
             });
 
             l.AddPrimitives(p =>

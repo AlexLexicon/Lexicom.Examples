@@ -41,15 +41,14 @@ public partial class ProductFieldViewModel : ObservableObject, INotificationHand
     [ObservableProperty]
     private string? _value;
 
-    private IRuleSetValidator<string?>? _validator;
     public IRuleSetValidator<string?>? Validator
     {
-        get => _validator;
+        get;
         set
         {
-            _validator = value;
+            field = value;
             OnPropertyChanged(nameof(Validator));
-            _validator?.Validation.Invoke(Value);
+            field?.Validation.Invoke(Value);
         }
     }
 

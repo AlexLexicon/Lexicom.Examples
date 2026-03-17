@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lexicom.DependencyInjection.Primitives" Version="10.0.4" />
+    <PackageReference Include="Lexicom.DependencyInjection.Primitives" Version="10.0.9" />
     <PackageReference Include="MediatR" Version="12.3.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
   </ItemGroup>
 
 </Project>

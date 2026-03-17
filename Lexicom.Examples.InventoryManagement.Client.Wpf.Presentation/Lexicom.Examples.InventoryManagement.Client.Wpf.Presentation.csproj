@@ -19,16 +19,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lexicom.Concentrate.Wpf.Amenities" Version="10.0.2" />
-    <PackageReference Include="Lexicom.Concentrate.Wpf.Controls" Version="10.0.2" />
-    <PackageReference Include="Lexicom.DependencyInjection.Primitives.For.Wpf" Version="10.0.4" />
-    <PackageReference Include="Lexicom.Mvvm.For.Wpf" Version="10.0.4" />
-    <PackageReference Include="Lexicom.Validation.For.Wpf" Version="10.0.4" />
-    <PackageReference Include="Lexicom.Wpf.Amenities" Version="10.0.4" />
-    <PackageReference Include="Lexicom.Wpf.AttachedProperties" Version="10.0.4" />
-    <PackageReference Include="Lexicom.Wpf.DependencyInjection" Version="10.0.4" />
-    <PackageReference Include="Lexicom.Wpf.ValueConverters" Version="10.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
+    <PackageReference Include="Lexicom.Concentrate.Wpf.Amenities" Version="10.0.4" />
+    <PackageReference Include="Lexicom.Concentrate.Wpf.Controls" Version="10.0.4" />
+    <PackageReference Include="Lexicom.DependencyInjection.Primitives.For.Wpf" Version="10.0.9" />
+    <PackageReference Include="Lexicom.Mvvm.For.Wpf" Version="10.0.9" />
+    <PackageReference Include="Lexicom.Validation.For.Wpf" Version="10.0.9" />
+    <PackageReference Include="Lexicom.Wpf.Amenities" Version="10.0.9" />
+    <PackageReference Include="Lexicom.Wpf.AttachedProperties" Version="10.0.9" />
+    <PackageReference Include="Lexicom.Wpf.DependencyInjection" Version="10.0.9" />
+    <PackageReference Include="Lexicom.Wpf.ValueConverters" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.5" />
   </ItemGroup>
 
   <ItemGroup>
